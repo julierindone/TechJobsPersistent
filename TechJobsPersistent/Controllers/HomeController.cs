@@ -29,6 +29,7 @@ namespace TechJobsPersistent.Controllers
             return View(jobs);
         }
 
+        [HttpGet]
         public IActionResult AddJob()
         {
             List<Employer> employers = context.Employers.ToList();
@@ -38,8 +39,8 @@ namespace TechJobsPersistent.Controllers
             return View(addJobViewModel);
         }
 
-        
-        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)    
+    [HttpPost]    
+        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, string[] selectedSkills )    
         {
             if (ModelState.IsValid)
             {
@@ -50,13 +51,28 @@ namespace TechJobsPersistent.Controllers
                     Name = addJobViewModel.Name
                 };
 
+                //loop to go through each item in selectedSkills 	
+
+                for (int i = 0; i < selectedSkills.Count(); i++)
+                { 
+                    JobSkill jobSkill = new JobSkill              //I think the exception is wrong somewhere here. Probably my loop.
+                    {
+                        Job = newJob,
+                        SkillId = int.Parse(selectedSkills[i]) 
+                    };
+                    context.JobSkills.Add(jobSkill);
+                }
+
                 context.Jobs.Add(newJob);
                 context.SaveChanges();
 
                 return Redirect("Index");
             }
+            //update adjobviewmodel by updating the skills property
 
-            return Redirect("/Home/AddJob");
+            addJobViewModel.Skills = context.Skills.ToList();
+
+            return View("AddJob", addJobViewModel);  
         }
 
         public IActionResult Detail(int id)

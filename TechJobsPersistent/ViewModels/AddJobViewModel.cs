@@ -10,8 +10,7 @@ namespace TechJobsPersistent.ViewModels
 {
     public class AddJobViewModel
     {
-
-        [Required(ErrorMessage ="Name is required.")]
+        [Required(ErrorMessage = "Name is required.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters in length.")]
         public string Name { get; set; }
         public int EmployerId { get; set; }
@@ -40,7 +39,8 @@ namespace TechJobsPersistent.ViewModels
                 );
             }
 
-            Skills = skills;
+            Skills = skills;             
+
         }
 
 

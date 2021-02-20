@@ -4,6 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TechJobsPersistent.Models;
 
+
+//////////////DO NOT TOUCH THIS - MADE BY LAUNCHCODE!??????????????????
+
+
 namespace TechJobsPersistent.ViewModels
 {
     public class AddJobSkillViewModel
@@ -17,6 +21,9 @@ namespace TechJobsPersistent.ViewModels
         public Job Job { get; set; }
 
         public List<SelectListItem> Skills { get; set; }
+
+        //////////////DO NOT TOUCH THIS - MADE BY LAUNCHCODE!??????????????????
+
 
         public AddJobSkillViewModel(Job theJob, List<Skill> possibleSkills)
         {

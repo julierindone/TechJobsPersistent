@@ -12,6 +12,11 @@ using TechJobsPersistent.ViewModels;
 
 namespace TechJobsPersistent.Controllers
 {
+
+
+    /// <summary>
+    /// ////////////////////////////////////////////DO NOT TOUCH! MADE BY LAUNCHCODE///////////////////////////////////
+    /// </summary>
     public class SkillController : Controller
     {
         private JobDbContext context;

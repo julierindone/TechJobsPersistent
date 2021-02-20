@@ -2,35 +2,38 @@
 @model TechJobsPersistent.ViewModels.AddJobViewModel
 
 
+
 <h1>Add a Job</h1>
 
 <form asp-controller="Home" asp-action="ProcessAddJobForm" method="post">
     <div class="form-group">
-        <label for="Name">Name:</label>
-        <input asp-for="Name" class="form-control" />
+        <label asp-for="Name">Job Title:</label>
+        @*        <input asp-for="Name" class="form-control" />*@
+        <input asp-for="Name" />
         <span asp-validation-for="Name"></span>
     </div>
 
     <div class="form-group">
 
-        <label asp-for="EmployerId">Employer</label>                
+        <label asp-for="EmployerId">Employer</label>
         <select asp-for="EmployerId" asp-items="Model.Employers"></select>
         <span></span>
         <br />
-        <a asp-controller="Employer" asp-action="Add">Add Employer</a>
+        <a asp-controller="Employer" asp-action="Add">Add Unlisted Employer</a>
     </div>
-
+    @*KRISTEN HELPED WITHTHIS - DO NOT TOUCH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*@
     <div class="form-group">
         <label>Skills:</label>
         <br>
         @foreach (var skill in Model.Skills)
         {
-            <label for="@skill.Id">@skill.Name</label>
             <input type="checkbox" name="selectedSkills" value="@skill.Id" />
+            <label for="@skill.Id">@skill.Name</label>
+            <br />
         }
-        <a asp-controller="Skill" asp-action="Add">Add Skills</a>
+        <a asp-controller="Skill" asp-action="Add">Add Unlisted Skill</a>
     </div>
-    
+    @*KRISTEN HELPED WITHTHIS - DO NOT TOUCH!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*@
     <input type="submit" value="Add Job" />
 
 </form>
