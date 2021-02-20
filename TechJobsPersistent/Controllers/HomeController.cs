@@ -55,7 +55,7 @@ namespace TechJobsPersistent.Controllers
 
                 for (int i = 0; i < selectedSkills.Count(); i++)
                 { 
-                    JobSkill jobSkill = new JobSkill              //I think the exception is wrong somewhere here. Probably my loop.
+                    JobSkill jobSkill = new JobSkill
                     {
                         Job = newJob,
                         SkillId = int.Parse(selectedSkills[i]) 
